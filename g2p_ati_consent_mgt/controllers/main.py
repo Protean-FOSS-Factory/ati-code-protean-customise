@@ -2123,26 +2123,8 @@ class G2PATIConsentController(http.Controller):
             return self._error(
                 "No valid allowed_data_field_ids for this partner. Configure partner allowed data fields first."
             )
-        # vals["allowed_data_field_ids"] = [(6, 0, filtered_allowed_ids)]
-        #
-        # consent = request.env["g2p.consent.request"].sudo().create(vals)
-
         vals["allowed_data_field_ids"] = [(6, 0, filtered_allowed_ids)]
-
-        # Handle base64 attachment from API payload
-        attachment_b64 = payload.get("attachment")
-        attachment_filename = payload.get("attachment_filename", "consent.pdf")
-        if attachment_b64:
-            att = request.env["ir.attachment"].sudo().create({
-                "name": attachment_filename,
-                "datas": attachment_b64,
-                "res_model": "g2p.consent.request",
-                "res_id": 0,
-            })
-            vals["attachment_ids"] = [(6, 0, [att.id])]
-
         consent = request.env["g2p.consent.request"].sudo().create(vals)
-
         _logger.info(
             "Consent request created via API: id=%s request_id=%s farmer_id=%s partner_id=%s",
             consent.id,
