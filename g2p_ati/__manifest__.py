@@ -30,6 +30,7 @@
         "data/primary_commodity.xml",
         "data/water_source.xml",
         "data/import_source.xml",
+        "data/crop_variety_data.xml",
         # "data/farmer_id_cron_job.xml",
         "views/seasons.xml",
         "views/farmer_profile_menu.xml",
@@ -52,6 +53,7 @@
         "views/web_login.xml",
         "views/main_menu.xml",
         "views/import_source_views.xml",
+        "views/crop_variety.xml",
         "wizard/rejection_reason_wizard.xml",
     ],
     "assets": {
